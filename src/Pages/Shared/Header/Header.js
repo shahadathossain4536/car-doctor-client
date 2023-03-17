@@ -1,16 +1,40 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../../assets/logo.svg";
+import { IoCartOutline, IoSearch } from "react-icons/io5";
 const Header = () => {
+  const navMenuClass = "text-[#444444] mr-2 font-semibold text-[18px]";
   const menuItem = (
     <>
       <li>
-        <Link to="/">Home</Link>
+        <Link className={`${navMenuClass}`} to="/">
+          Home
+        </Link>
+      </li>
+      <li>
+        <Link className={`${navMenuClass}`} to="/">
+          About
+        </Link>
+      </li>
+      <li>
+        <Link className={`${navMenuClass}`} to="/">
+          Services
+        </Link>
+      </li>
+      <li>
+        <Link className={`${navMenuClass}`} to="/">
+          Blog
+        </Link>
+      </li>
+      <li>
+        <Link className={`${navMenuClass}`} to="/">
+          Contact
+        </Link>
       </li>
     </>
   );
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar mb-10 bg-base-100">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -44,7 +68,15 @@ const Header = () => {
         <ul className="menu menu-horizontal px-1">{menuItem}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Get started</a>
+        <IoCartOutline className="h-[24px] w-[24px] mx-5 cursor-pointer" />
+        <IoSearch className="h-[24px] w-[24px]  mx-5 cursor-pointer" />
+
+        <Link
+          to="/"
+          className="w-[170px] h-[56px] border-[2px] border-[#FF3811] rounded-lg flex justify-center items-center text-[#FF3811] text-lg font-semibold hover:bg-[#FF3811] hover:text-white transition duration-200 ease-in-out"
+        >
+          Appointment
+        </Link>
       </div>
     </div>
   );
