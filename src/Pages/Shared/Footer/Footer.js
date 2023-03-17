@@ -1,56 +1,69 @@
 import React from "react";
 import logo from "../../../assets/logo.svg";
+import {
+  IoLogoTwitter,
+  IoLogoInstagram,
+  IoLogoGoogle,
+  IoLogoLinkedin,
+} from "react-icons/io5";
 const Footer = () => {
+  const footerSocialLnk =
+    "w-[36.36px] h-[34.63px] bg-[#FFFFFF] bg-opacity-10 flex - justify-center items-center rounded-full cursor-pointer";
+  const footerLinkClass = "text-white text-[20px]  font-semibold mb-10";
   return (
-    <footer className="footer p-10 bg-base-200 text-base-content">
-      <div>
+    <footer className="footer p-32 bg-[#151515]  text-white">
+      <div className="w-[260px] h-[217px]">
         <img src={logo} alt="" srcset="" />
-        <p>
-          ACME Industries Ltd.
-          <br />
-          Providing reliable tech since 1992
+        <p className="text-justify">
+          Edwin Diaz is a software and web technologies engineer, a life coach
+          trainer who is also a serial .
         </p>
+        <div className="flex  gap-2 mt-3">
+          <div className={`${footerSocialLnk}`}>
+            <IoLogoGoogle />
+          </div>
+          <div className={`${footerSocialLnk}`}>
+            <IoLogoTwitter className="" />
+          </div>
+          <div className={`${footerSocialLnk}`}>
+            <IoLogoInstagram className="" />
+          </div>
+          <div className={`${footerSocialLnk}`}>
+            <IoLogoLinkedin className="" />
+          </div>
+        </div>
       </div>
       <div>
-        <span className="footer-title">Services</span>
+        <span className={`${footerLinkClass}`}>About</span>
         <a href="/" className="link link-hover">
-          Branding
+          Home
         </a>
         <a href="/" className="link link-hover">
-          Design
-        </a>
-        <a href="/" className="link link-hover">
-          Marketing
-        </a>
-        <a href="/" className="link link-hover">
-          Advertisement
-        </a>
-      </div>
-      <div>
-        <span className="footer-title">Company</span>
-        <a href="/" className="link link-hover">
-          About us
+          Service
         </a>
         <a href="/" className="link link-hover">
           Contact
         </a>
+      </div>
+      <div>
+        <span className={`${footerLinkClass}`}>Company</span>
         <a href="/" className="link link-hover">
-          Jobs
+          Why Car Doctor
         </a>
         <a href="/" className="link link-hover">
-          Press kit
+          About
         </a>
       </div>
       <div>
-        <span className="footer-title">Legal</span>
+        <span className={`${footerLinkClass}`}>Support</span>
         <a href="/" className="link link-hover">
-          Terms of use
+          Support Center
         </a>
         <a href="/" className="link link-hover">
-          Privacy policy
+          Feedback
         </a>
         <a href="/" className="link link-hover">
-          Cookie policy
+          Accessability
         </a>
       </div>
     </footer>
