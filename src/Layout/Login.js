@@ -1,16 +1,14 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import Footer from "../Pages/Shared/Footer/Footer";
 import Header from "../Pages/Shared/Header/Header";
 
-const Main = () => {
+const Login = () => {
   return (
     <div>
       <Header />
       <Outlet />
-      <Footer />
-    </div> 
+    </div>
   );
 };
 
-export default Main;
+export default Login;

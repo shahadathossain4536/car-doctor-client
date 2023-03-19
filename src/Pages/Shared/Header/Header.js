@@ -31,6 +31,11 @@ const Header = () => {
           Contact
         </Link>
       </li>
+      <li>
+        <Link className={`${navMenuClass}`} to="/signin">
+          SingIn
+        </Link>
+      </li>
     </>
   );
   return (
