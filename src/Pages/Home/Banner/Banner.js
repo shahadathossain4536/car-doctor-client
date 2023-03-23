@@ -4,7 +4,7 @@ import Banner1 from "../../../assets/images/banner/1.jpg";
 import Banner2 from "../../../assets/images/banner/2.jpg";
 import Banner3 from "../../../assets/images/banner/3.jpg";
 import Banner4 from "../../../assets/images/banner/4.jpg";
-import Banner5 from "../../../assets/images/banner/5.jpg";
+import Banner5 from "../../../assets/images/banner/5.jpg"; 
 import Banner6 from "../../../assets/images/banner/6.jpg";
 
 import BannerItem from "./BannerItem";

@@ -1,32 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import logo_img from "../../assets/images/login/login.svg";
 import fb from "../../assets/images/login/bx_bxl-facebook.png";
 import google from "../../assets/images/login/google.png";
 import linkedin from "../../assets/images/login/bx_bxl-linkedin.png";
 import { Link } from "react-router-dom";
+import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 const SignIn = () => {
+  const [seePass, setSeePass] = useState(true);
+  const handleSeePass = () => {
+    console.log("handleSeePass");
+    setSeePass(!seePass);
+  };
+
+  const handleSignIn = (e) => {
+    e.preventDefault();
+  };
   return (
     <div className="flex justify-around items-center my-10">
       <div>
         <img className="w-[360px] h-[402px]" src={logo_img} alt="" srcset="" />
       </div>
-      <form className="w-[500px] h-[620px] border-slate-400 border-[1px] border-opacity-80  rounded-md">
+      <form
+        onSubmit={handleSignIn}
+        className="w-[500px] h-[620px] border-slate-400 border-[1px] border-opacity-80  rounded-md"
+      >
         <p className="text-[#444444] text-[40px] font-semibold text-center my-5 ">
           Sign In
         </p>
         <div className="mx-8 mt-10">
-          <div>
-            <label
-              className="block text-[#444444] text-lg font-semibold my-3"
-              htmlFor=""
-            >
-              Name
-            </label>
-            <input
-              className="w-[430px] h-[60px] border-2 rounded-[10px] text-xl outline-none"
-              type="text"
-            />
-          </div>
           <div>
             <label
               className="block text-[#444444] text-lg font-semibold my-3"
@@ -39,12 +40,40 @@ const SignIn = () => {
               type="email"
             />
           </div>
+          <div>
+            <label
+              className="block text-[#444444] text-lg font-semibold my-3"
+              htmlFor=""
+            >
+              Password
+            </label>
 
+            <div className="w-[430px] h-[60px] border-2 rounded-[10px] flex items-center">
+              <div className=" flex justify-start items-center gap-4">
+                <input
+                  className="mx-2 text-xl w-[375px] outline-none"
+                  type={`${seePass ? "password" : "text"}`}
+                />
+                {seePass ? (
+                  <IoEyeOutline
+                    onClick={handleSeePass}
+                    className="cursor-pointer mr-3"
+                  />
+                ) : (
+                  <IoEyeOffOutline
+                    onClick={handleSeePass}
+                    className="cursor-pointer mr-3"
+                  />
+                )}
+              </div>
+            </div>
+          </div>
           <input
             className="w-[430px] h-[60px] bg-[#FF3811] rounded-[10px] text-xl font-semibold  text-white mt-7"
             type="submit"
             value="Sign In"
           />
+
           <p className="text-center font-medium text-[16px] mt-5">
             Or Sign In with
           </p>

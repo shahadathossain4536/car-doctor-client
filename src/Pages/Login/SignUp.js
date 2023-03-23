@@ -20,6 +20,7 @@ const SignUp = () => {
       .then((result) => {
         const user = result.user;
         console.log("signUp", user);
+        e.target.reset();
       })
       .catch((err) => console.error("singup-error", err));
   };

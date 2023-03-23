@@ -7,7 +7,7 @@ import insta from "../../../assets/icons/insata.png";
 const TeamCard = ({ team }) => {
   const { img, name, role } = team;
   return (
-    <div className="w-[364px] h-[487px] border-2 rounded-[10px] mx-auto my-6">
+    <div className="min-w-[364px] h-[487px] border-2 rounded-[10px] mx-auto my-6">
       <img
         className="w-[314px] h-[293px] object-cover object-center rounded-[10px] mx-auto mt-5"
         src={img}
@@ -26,7 +26,6 @@ const TeamCard = ({ team }) => {
         <img src={linkedin} alt="" srcset="" />
         <img src={insta} alt="" srcset="" />
       </div>
-     
     </div>
   );
 };

@@ -7,7 +7,7 @@ import Banner4 from "../../../assets/images/banner/4.jpg";
 import Banner5 from "../../../assets/images/banner/5.jpg";
 import Banner6 from "../../../assets/images/banner/6.jpg";
 import "./BannerItem.css";
-const BannerItem = ({ slide }) => {
+const BannerItem = ({ slide }) => { 
   const { image, prev, id, next } = slide;
   return (
     <div id={`slide${id}`} className="carousel-item relative w-full ">

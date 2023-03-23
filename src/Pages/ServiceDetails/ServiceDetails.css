@@ -1,10 +1,12 @@
-.carousel-img:after {
+.serviceDetails-img:after {
     content: '';
     position: absolute;
     border-radius: 12px;
-    left: 0;
+    left: 70px;
     top: 0;
-    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1140px;
     height: 100%;
     display: inline-block;
     /* background: linear-gradient(to right, #151515 0%, rgba(21, 21, 21, 0) 100%) */
