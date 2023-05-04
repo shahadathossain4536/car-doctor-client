@@ -3,7 +3,8 @@ import app from "../../Firebase/firebaseConfig";
 import {
   createUserWithEmailAndPassword,
   getAuth,
-  onAuthStateChanged,
+  onAuthStateChanged, 
+  signInWithEmailAndPassword,
 } from "firebase/auth";
 export const AuthContext = createContext();
 const auth = getAuth(app);
@@ -13,11 +14,14 @@ const AuthProvider = ({ children }) => {
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
-
+  const loginUser = (email, password) => {
+    return signInWithEmailAndPassword(auth, email, password);
+  };
   const authInfo = {
     user,
     loading,
     createUser,
+    loginUser,
   };
 
   useEffect(() => {

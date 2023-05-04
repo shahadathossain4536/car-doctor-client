@@ -18,7 +18,7 @@ const SignUp = () => {
     console.log(name, email, password);
     createUser(email, password)
       .then((result) => {
-        const user = result.user;
+        const user = result.user; 
         console.log("signUp", user);
         e.target.reset();
       })

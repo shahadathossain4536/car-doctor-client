@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import logo_img from "../../assets/images/login/login.svg";
 import fb from "../../assets/images/login/bx_bxl-facebook.png";
 import google from "../../assets/images/login/google.png";
 import linkedin from "../../assets/images/login/bx_bxl-linkedin.png";
 import { Link } from "react-router-dom";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
+import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 const SignIn = () => {
+  const { loginUser } = useContext(AuthContext);
   const [seePass, setSeePass] = useState(true);
   const handleSeePass = () => {
     console.log("handleSeePass");
@@ -14,6 +16,19 @@ const SignIn = () => {
 
   const handleSignIn = (e) => {
     e.preventDefault();
+    const from = e.target;
+    const email = from.email.value;
+    const password = from.password.value;
+    console.log(email, password);
+    loginUser(email, password)
+      .then((result) => {
+        console.log(result);
+        // const user = result.user;
+        // console.log("login", user);
+        e.target.reset();
+      })
+      .catch((err) => console.error("login-error", err));
+ 
   };
   return (
     <div className="flex justify-around items-center my-10">
@@ -38,6 +53,7 @@ const SignIn = () => {
             <input
               className="w-[430px] h-[60px] border-2 rounded-[10px] text-xl outline-none"
               type="email"
+              name="email"
             />
           </div>
           <div>
@@ -52,6 +68,7 @@ const SignIn = () => {
               <div className=" flex justify-start items-center gap-4">
                 <input
                   className="mx-2 text-xl w-[375px] outline-none"
+                  name="password"
                   type={`${seePass ? "password" : "text"}`}
                 />
                 {seePass ? (
@@ -69,7 +86,7 @@ const SignIn = () => {
             </div>
           </div>
           <input
-            className="w-[430px] h-[60px] bg-[#FF3811] rounded-[10px] text-xl font-semibold  text-white mt-7"
+            className="w-[430px] h-[60px] bg-[#FF3811] rounded-[10px] text-xl font-semibold  text-white mt-7 cursor-pointer"
             type="submit"
             value="Sign In"
           />

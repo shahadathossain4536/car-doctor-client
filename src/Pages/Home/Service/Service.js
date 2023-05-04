@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import service1 from "../../../assets/images/services/1.jpg";
 import service2 from "../../../assets/images/services/2.jpg";
 import service3 from "../../../assets/images/services/3.jpg";
@@ -8,39 +8,46 @@ import service6 from "../../../assets/images/services/6.jpg";
 import { IoArrowForwardSharp, IoArrowBackSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
 const Service = () => {
+  const [services, setServices] = useState();
+  console.log("services", services);
+  useEffect(() => {
+    fetch("http://localhost:5000/services")
+      .then((res) => res.json())
+      .then((data) => setServices(data));
+  }, []);
   const serviceData = [
     {
-      id: 1,
+      _id: 1,
       img: service1,
       serviceName: "Electrical System",
       servicePrice: "20.00",
     },
     {
-      id: 2,
+      _id: 2,
       img: service2,
       serviceName: "Engine Diagnostics",
       servicePrice: "20.00",
     },
     {
-      id: 3,
+      _id: 3,
       img: service3,
       serviceName: "Auto Car Repair",
       servicePrice: "20.00",
     },
     {
-      id: 4,
+      _id: 4,
       img: service4,
       serviceName: "Electrical System",
       servicePrice: "20.00",
     },
     {
-      id: 5,
+      _id: 5,
       img: service5,
       serviceName: "Engine Diagnostics",
       servicePrice: "20.00",
     },
     {
-      id: 6,
+      _id: 6,
       img: service6,
       serviceName: "Auto Car Repair",
       servicePrice: "20.00",
@@ -59,7 +66,7 @@ const Service = () => {
         or randomised words which don't look even slightly believable.
       </p>
       <div className="grid grid-cols-3 ">
-        {serviceData.map((service) => (
+        {services?.map((service) => (
           <div className="w-[364px] h-[348px]  my-10 p-[25px] border-[1px] rounded-[10px] mx-auto">
             <div>
               <img
@@ -69,13 +76,15 @@ const Service = () => {
                 srcset=""
               />
               <p className="text-[25px] font-bold my-2 text-[#444444]">
-                {service.serviceName}
+                {service.title}
               </p>
               <div className="flex justify-between items-center">
                 <p className="text-[#FF3811] font-semibold text-[20px]">
-                  Price : ${service.servicePrice}
+                  Price : ${service.price}
                 </p>
-                <IoArrowForwardSharp className="text-[#FF3811] text-2xl" />
+                <Link to={`/checkout/${service?._id}`}>
+                  <IoArrowForwardSharp className="text-[#FF3811] text-2xl" />
+                </Link>
               </div>
             </div>
           </div>

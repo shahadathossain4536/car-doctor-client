@@ -1,10 +1,13 @@
 import Login from "../../Layout/Login";
 import Main from "../../Layout/Main";
+import AddNewService from "../../Pages/AddNewService/AddNewService";
+import CartDetails from "../../Pages/CartDetails/CartDetails";
 import Checkout from "../../Pages/Checkout/Checkout";
 import Home from "../../Pages/Home/Home/Home";
 import SignIn from "../../Pages/Login/SignIn";
 import SignUp from "../../Pages/Login/SignUp";
 import NotFound from "../../Pages/NotFound/NotFound";
+import Orders from "../../Pages/Orders/Orders";
 import ServiceDetails from "../../Pages/ServiceDetails/ServiceDetails";
 import Test from "../../Pages/test/Test";
 
@@ -20,12 +23,26 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/checkout",
+        path: "/checkout/:id",
         element: <Checkout />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/service/${params.id}`),
+      },
+      {
+        path: "/orders",
+        element: <Orders />,
       },
       {
         path: "/serviceDetails",
         element: <ServiceDetails />,
+      },
+      {
+        path: "/addNewService",
+        element: <AddNewService />,
+      },
+      {
+        path: "/cartDetails",
+        element: <CartDetails />,
       },
     ],
   },
