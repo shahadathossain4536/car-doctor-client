@@ -3,33 +3,53 @@ import logo_img from "../../assets/images/login/login.svg";
 import fb from "../../assets/images/login/bx_bxl-facebook.png";
 import google from "../../assets/images/login/google.png";
 import linkedin from "../../assets/images/login/bx_bxl-linkedin.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 const SignIn = () => {
   const { loginUser } = useContext(AuthContext);
   const [seePass, setSeePass] = useState(true);
+  let navigate = useNavigate();
+  let location = useLocation();
   const handleSeePass = () => {
     console.log("handleSeePass");
     setSeePass(!seePass);
   };
-
+  let from = location?.state?.from?.pathname || "/";
   const handleSignIn = (e) => {
     e.preventDefault();
-    const from = e.target;
-    const email = from.email.value;
-    const password = from.password.value;
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
     console.log(email, password);
     loginUser(email, password)
       .then((result) => {
         console.log(result);
-        // const user = result.user;
-        // console.log("login", user);
+        const user = result.user;
+        const currentUser = {
+          email: user.email,
+        };
+        console.log("currentUser", currentUser);
         e.target.reset();
+        // get jwt token
+
+        fetch("http://localhost:5000/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(currentUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log("tokenData", data);
+            localStorage.setItem("token", data.token);
+            navigate(from, { replace: true });
+          });
       })
       .catch((err) => console.error("login-error", err));
- 
   };
+
   return (
     <div className="flex justify-around items-center my-10">
       <div>

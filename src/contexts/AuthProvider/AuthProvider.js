@@ -5,6 +5,7 @@ import {
   getAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signOut,
 } from "firebase/auth";
 export const AuthContext = createContext();
 const auth = getAuth(app);
@@ -19,11 +20,17 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
+
+  const logOut = () => {
+    localStorage.removeItem("token");
+    return signOut(auth);
+  };
   const authInfo = {
     user,
     loading,
     createUser,
     loginUser,
+    logOut,
   };
 
   useEffect(() => {

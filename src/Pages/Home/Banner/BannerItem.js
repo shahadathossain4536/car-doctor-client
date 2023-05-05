@@ -7,12 +7,12 @@ import Banner4 from "../../../assets/images/banner/4.jpg";
 import Banner5 from "../../../assets/images/banner/5.jpg";
 import Banner6 from "../../../assets/images/banner/6.jpg";
 import "./BannerItem.css";
-const BannerItem = ({ slide }) => { 
+const BannerItem = ({ slide }) => {
   const { image, prev, id, next } = slide;
   return (
     <div id={`slide${id}`} className="carousel-item relative w-full ">
-      <div className="carousel-img h-[600px] object-cover ">
-        <img src={image} className="w-full rounded-xl rounded-l-xl" />
+      <div className="carousel-img  h-[600px] object-center overflow-y-hidden">
+        <img src={image} className="w-full rounded-xl" />
       </div>
 
       <div className="absolute flex justify-end gap-5 transform -translate-y-1/2 left-5 right-5 bottom-[0px]">

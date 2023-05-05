@@ -4,8 +4,11 @@ import logo from "../../../assets/logo.svg";
 import { IoCartOutline, IoSearch } from "react-icons/io5";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 const Header = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
   const navMenuClass = "text-[#444444] mr-2 font-semibold text-[18px]";
+  const handleLogOut = () => {
+    logOut();
+  };
   const menuItem = (
     <>
       <li>
@@ -42,7 +45,9 @@ const Header = () => {
       </li>
       {user?.email ? (
         <li>
-          <button className={`${navMenuClass}`}>Sing Out</button>
+          <button className={`${navMenuClass}`} onClick={() => logOut()}>
+            Sing Out
+          </button>
         </li>
       ) : (
         <li>

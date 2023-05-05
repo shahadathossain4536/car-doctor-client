@@ -32,7 +32,9 @@ const Checkout = () => {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("token")}`,
       },
+
       body: JSON.stringify(order),
     })
       .then((res) => res.json())

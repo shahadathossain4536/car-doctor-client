@@ -7,7 +7,7 @@ const PrivateRoute = ({ children }) => {
   const location = useLocation();
   if (loading) {
     return (
-      <div className="flex justify-center items-center">
+      <div className="flex justify-center items-center my-16">
         <h1 className="text-5xl text-center">Loading....</h1>
       </div>
     );
@@ -15,7 +15,7 @@ const PrivateRoute = ({ children }) => {
   if (user) {
     return children;
   }
-  return <Navigate state={{ from: location }} replace></Navigate>;
+  return <Navigate to="/signin" state={{ from: location }} replace></Navigate>;
 };
 
 export default PrivateRoute;
