@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../../assets/logo.svg";
 import { IoCartOutline, IoSearch } from "react-icons/io5";
+import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 const Header = () => {
+  const { user } = useContext(AuthContext);
   const navMenuClass = "text-[#444444] mr-2 font-semibold text-[18px]";
   const menuItem = (
     <>
@@ -16,11 +18,13 @@ const Header = () => {
           About
         </Link>
       </li>
-      <li>
-        <Link className={`${navMenuClass}`} to="/">
-          Services
-        </Link>
-      </li>
+      {user?.email && (
+        <li>
+          <Link className={`${navMenuClass}`} to="/orders">
+            Order
+          </Link>
+        </li>
+      )}
       <li>
         <Link className={`${navMenuClass}`} to="/">
           Blog
@@ -28,14 +32,25 @@ const Header = () => {
       </li>
       <li>
         <Link className={`${navMenuClass}`} to="/">
-          Contact
+          Services
         </Link>
       </li>
       <li>
-        <Link className={`${navMenuClass}`} to="/signin">
-          SingIn
+        <Link className={`${navMenuClass}`} to="/">
+          Contact
         </Link>
       </li>
+      {user?.email ? (
+        <li>
+          <button className={`${navMenuClass}`}>Sing Out</button>
+        </li>
+      ) : (
+        <li>
+          <Link className={`${navMenuClass}`} to="/signin">
+            SingIn
+          </Link>
+        </li>
+      )}
     </>
   );
   return (
