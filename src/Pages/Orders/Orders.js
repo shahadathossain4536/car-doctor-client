@@ -8,13 +8,16 @@ const Orders = () => {
   const { user, logOut } = useContext(AuthContext);
   const [orders, setOrders] = useState([]);
   console.log("orders", orders);
-  //   const url = `http://localhost:5000/orders?email=${user?.email}`;
+  //   const url = `https://car-doctor-server-mu.vercel.app/orders?email=${user?.email}`;
   useEffect(() => {
-    fetch(`http://localhost:5000/orders?email=${user?.email}`, {
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    })
+    fetch(
+      `https://car-doctor-server-mu.vercel.app/orders?email=${user?.email}`,
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    )
       .then((res) => {
         if (res.status === 401 || res.status === 403) {
           return logOut();
@@ -32,7 +35,7 @@ const Orders = () => {
       "Are you sure, you want to cancel this order"
     );
     if (proceed) {
-      fetch(`http://localhost:5000/orders/${id}`, {
+      fetch(`https://car-doctor-server-mu.vercel.app/orders/${id}`, {
         method: "DELETE",
         headers: {
           authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -50,7 +53,7 @@ const Orders = () => {
     }
   };
   const handleStatusUpdate = (id) => {
-    fetch(`http://localhost:5000/orders/${id}`, {
+    fetch(`https://car-doctor-server-mu.vercel.app/orders/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

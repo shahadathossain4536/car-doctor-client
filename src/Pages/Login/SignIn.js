@@ -33,7 +33,7 @@ const SignIn = () => {
         e.target.reset();
         // get jwt token
 
-        fetch("http://localhost:5000/jwt", {
+        fetch("https://car-doctor-server-mu.vercel.app/jwt", {
           method: "POST",
           headers: {
             "content-type": "application/json",
